@@ -105,6 +105,7 @@ ADI_UART_RESULT_TYPE    uart_UnInit             (void);
 void                    delay                   (uint32_t counts);
 extern int32_t          adi_initpinmux          (void);
 void                    multiplex_adg732        (ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq,uint32_t n_el);
+void                    multiplex_adg732_neighbour        (ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq,uint32_t n_el);
 void                    time_series             (ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq);
 void                    bioimpedance_spectroscopy     (ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq);
 void                    init_GPIO_ports         (void);
@@ -115,6 +116,8 @@ void                    init_mode_bipolar       (void);
 void                    time_series_bipolar(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq);
 fixed32_t               calculate_bipolar_magnitude     (q31_t magnitude_rcal, q31_t magnitude_z);
 void                    bipolar_adg732(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq,uint32_t n_el);
+
+
 
 int main(void)
 {
@@ -960,10 +963,160 @@ void multiplex_adg732(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq,uin
     adi_UART_BufFlush(hUartDevice);
 }
 /******************************************************************************
+    Main code for the imaging function with 32 electrodes. 
+  
+*****************************************************************************/
+void multiplex_adg732_neighbour(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq,uint32_t n_el) {
+  
+   // int 32 of the sequence, no of measures based on the sequence entered. 
+   // i.e. n_el if 8, 16, 32, we can pick which sequence. 
+   //   32, 192, 896  
+    uint32_t            numberofmeasures;
+    if (n_el == 8) {
+      numberofmeasures = 32;
+    }  
+    else if (n_el == 16) {
+      numberofmeasures = 192;
+    }
+    else if (n_el == 32) {
+      numberofmeasures = 896;
+    }
+    else {
+      numberofmeasures = 928;
+      PRINT("number of measures is 0\n");
+    }
+    
+    uint32_t            rtiaAndGain;
+    /* Calculate final magnitude value, calibrated with RTIA the gain of the instrumenation amplifier */
+    rtiaAndGain = (uint32_t)((RTIA * 1.5) / INST_AMP_GAIN);
+      
+    char                msg[MSG_MAXLEN_M3] = {0};
+    //sprintf(msg, "GAIN: %u Magnitudes:", rtiaAndGain);     // Now gain is 33132? 
+    sprintf(msg,"magnitudes: ");
+    PRINT(msg);
+    // 
+    // NUMBEROFMEASURES is determined by which electrode configuration: 8,16 or 32. 
+    for (uint32_t econf = 0;econf<numberofmeasures;econf++) {    
+                
+      char                tmp[300] = {0};      
+      q31_t               dft_results_q31[DFT_RESULTS_COUNT]      = {0};
+      q15_t               dft_results_q15[DFT_RESULTS_COUNT]      = {0};
+      q31_t               temp_magnitude[DFT_RESULTS_COUNT/2]     = {0};
+      int16_t             temp_dft_results[DFT_RESULTS_COUNT]     = {0};
+      fixed32_t           magnitude_result[DFT_RESULTS_COUNT/2-1] = {0};
+      
+      // This is where we select the electrode sequence. i.e. 8,16 or 32 adjacent or opposition.  
+      int16_t* e;
+      if (n_el == 8) {
+        e = (int16_t *)electrode_configuration_8_opposition[econf];
+      }  
+      else if (n_el == 16) {
+        e = (int16_t *)electrode_configuration_16_opposition[econf];
+      }
+      else if (n_el == 32) {
+        e = (int16_t *)electrode_configuration_32_opposition[econf];
+      }
+      else {
+        e = (int16_t *)electrode_configuration_32_adjacent[econf];
+      }
+      
+      // M1,M2,M3,M4 = 1,2,4,5 
+      // U4, A-, m1, position 3
+      // U2, V-, m2, position 2 
+      // U1, A+. m3, position 1
+      // U5, V+, m4, position 4
+      // 
+      // e_conf file is written as A+,A-,V+,V-
+      // I've mapped them like this so the e_conf file matches the 
+      // multiplexer assignement i.e. A+ -> A+ etc. 
+      int16_t* mx1_assignment = (int16_t *)truth_table[e[1]];  // A- -> 
+      int16_t* mx2_assignment = (int16_t *)truth_table[e[3]];  // V- ->  
+      int16_t* mx3_assignment = (int16_t *)truth_table[e[0]];  // A+ -> 
+      int16_t* mx4_assignment = (int16_t *)truth_table[e[2]];  // V+ ->   
+        
+      PinMap m1_portpin;  
+      PinMap m2_portpin;  
+      PinMap m3_portpin;  
+      PinMap m4_portpin;      
+      // A4 A3 A2 A1 A0
+      for (int i=0;i<5;i++) {   
+        m1_portpin = m1_configuration[i]; // first one is a4,a3,a2,a1,a0. 
+        m2_portpin = m2_configuration[i]; // second one is        
+        m3_portpin = m3_configuration[i]; // third one is          
+        m4_portpin = m4_configuration[i]; // fourth one is 
+        // set the port pins on each multiplexer. 
+        if (mx1_assignment[i] > 0) { 
+          adi_GPIO_SetHigh(m1_portpin.Port, m1_portpin.Pins);
+        }
+        else {
+          adi_GPIO_SetLow(m1_portpin.Port, m1_portpin.Pins);
+        }
+        if (mx2_assignment[i] > 0) {
+          adi_GPIO_SetHigh(m2_portpin.Port,m2_portpin.Pins);
+        }
+        else {
+          adi_GPIO_SetLow(m2_portpin.Port,m2_portpin.Pins);  
+        }
+        if (mx3_assignment[i] > 0) {
+          adi_GPIO_SetHigh(m3_portpin.Port,m3_portpin.Pins);
+        }
+        else {
+          adi_GPIO_SetLow(m3_portpin.Port,m3_portpin.Pins);
+        }        
+        if (mx4_assignment[i] > 0) {
+          adi_GPIO_SetHigh(m4_portpin.Port,m4_portpin.Pins);
+        }
+        else {
+          adi_GPIO_SetLow(m4_portpin.Port,m4_portpin.Pins);
+        }      
+      }  // end of for loop for setting multiplexers. 
+      
+      // Now the multiplexers are set, take a measurement. 
+      // Get a measurement:  
+      // 1. calibrate (only the first time) 
+      // 2. sequence enable
+      // 3. take measurement. 
+      // 4. sequence disable
+      // 5. put result into new results table
+      // adi_AFE_EnableSoftwareCRC(hDevice, true);
+      /* Perform the Impedance measurement */      
+      
+      if (ADI_AFE_SUCCESS != adi_AFE_RunSequence(hDevice, seq, (uint16_t *)temp_dft_results, DFT_RESULTS_COUNT)) 
+      {
+        PRINT("FAILED Impedance Measurement");
+      }   
+                     
+      convert_dft_results(temp_dft_results, dft_results_q15, dft_results_q31);
+      /* Magnitude calculation */
+      //arm_cmplx_mag_q31(dft_results_q31, temp_magnitude, 2);
+            /* Magnitude calculation */
+      /* Use CMSIS function */
+      arm_cmplx_mag_q31(dft_results_q31, temp_magnitude, DFT_RESULTS_COUNT / 2);
+      
+      // magnitude = magnitude_1 / magnitude_2 * res  ,
+      magnitude_result[0] = calculate_magnitude(temp_magnitude[1], temp_magnitude[0], rtiaAndGain);
+      
+      /* Print DFT complex results to console 983039, 0 on my board, and  when it works magnitude is 74333772, 274209844) */     
+      //sprintf(tmp, "   magnitudes     = (%u, %u)\r\n", temp_magnitude[0], temp_magnitude[1]);
+      //strcat(msg,tmp);
+        
+      sprintf_fixed32(tmp, magnitude_result[0]);
+      strcat(tmp,",");
+      //strcat(msg," ,"); 
+      PRINT(tmp);
+    } // END  e_config for loop. 
+    
+    //strcat(msg," \r\n"); 
+    PRINT("\r\n"); 
+    adi_UART_BufFlush(hUartDevice);
+}
+
+/******************************************************************************
     Main code for the imaging function bipolar measurements(not tetrapolar). 
   
 *****************************************************************************/
 void bipolar_adg732(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq,uint32_t n_el) {
+
   
    // int 32 of the sequence, no of measures based on the sequence entered. 
    // i.e. n_el if 8, 16, 32, we can pick which sequence. 
