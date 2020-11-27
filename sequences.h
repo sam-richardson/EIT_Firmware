@@ -478,8 +478,8 @@ uint32_t seq_afe_fast_meas_4wire[] = {
     0xA0000208,   /* AFE_ADC_CFG: AN_A, Use GAIN and OFFSET AUX                             */
     0x00000640,   /* Wait 100us                                                             */
     0x80024EF0,   /* AFE_CFG: WAVEGEN_EN = 1                                                */
-    0x00032340,   /* Wait 13ms                                                              */    
-    // 0x00000C80,   /* Wait 200us                                                             */
+    //0x00032340,   /* Wait 13ms                                                              */    
+    0x00000C80,   /* Wait 200us                                                             */
     0x8002CFF0,   /* AFE_CFG: ADC_CONV_EN = 1, DFT_EN = 1                                   */
     0x00032340,   /* Wait 13ms                                                              */
     0x80020EF0,   /* AFE_CFG: WAVEGEN_EN, ADC_CONV_EN = 0, DFT_EN = 0                       */
