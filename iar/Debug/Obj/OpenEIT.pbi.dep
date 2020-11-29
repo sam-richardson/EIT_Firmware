@@ -47,9 +47,4 @@ OpenEIT.pbi: C:\Users\sric581\Documents\EIT_Firmware\OpenEIT.c \
   C:\Users\sric581\Documents\EIT_Firmware\iar\..\inc\config\adi_afe_config.h \
   C:\Users\sric581\Documents\EIT_Firmware\iar\..\inc\afe_lib.h \
   C:\Users\sric581\Documents\EIT_Firmware\iar\..\inc\uart.h \
-  C:\Users\sric581\Documents\EIT_Firmware/sequences.h \
-  C:\Users\sric581\Documents\EIT_Firmware/lookup.h \
-  C:\Users\sric581\Documents\EIT_Firmware\iar\..\inc\gpio.h \
-  C:\Users\sric581\Documents\EIT_Firmware/modes.h \
-  C:\Users\sric581\Documents\EIT_Firmware\iar\..\inc\ADuCM350_device.h \
-  C:\Users\sric581\Documents\EIT_Firmware\iar\..\inc\misra.h
+  C:\Users\sric581\Documents\EIT_Firmware/lookup.h

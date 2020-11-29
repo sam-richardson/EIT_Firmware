@@ -1,5 +1,7 @@
 /*! \addtogroup AFE_Library AFE Library
  *  Author: Jean Rintoul , Mindseye Biomedical LLC Copyright 2018
+ * Edit: Sam Richardson 2020
+ 
  */
 
 #ifndef __SEQUENCES_H__
@@ -444,7 +446,7 @@ uint32_t seq_afe_poweritup[] = {
     0x80024EF0,   /* AFE_CFG: WAVEGEN_EN = 1                                                */
     0x00000C80,   /* Wait 200us                                                             */
     0x8002CFF0,   /* AFE_CFG: ADC_CONV_EN = 1, DFT_EN = 1                                   */
-    0x00032340,   /*  Wait 12.852ms ( -148us to stop at midscale)                                */
+    0x00032340,   /* Wait 13ms ( -148us to stop at midscale)                                */
     0x80020EF0,   /* AFE_CFG: ADC_CONV_EN = 0, DFT_EN = 0                                   */
     /* AN_A */
     0xA0000208,   /* AFE_ADC_CFG: AN_A, Use GAIN and OFFSET AUX                             */
@@ -452,7 +454,7 @@ uint32_t seq_afe_poweritup[] = {
     0x80024EF0,   /* AFE_CFG: WAVEGEN_EN = 1                                                */
     0x00000C80,   /* Wait 200us                                                             */
     0x8002CFF0,   /* AFE_CFG: ADC_CONV_EN = 1, DFT_EN = 1                                   */
-    0x00032340,   /*  Wait 12.852ms                                                             */
+    0x00032340,   /* Wait 13ms                                                              */
     0x80020EF0,   /* AFE_CFG: WAVEGEN_EN, ADC_CONV_EN = 0, DFT_EN = 0                       */
     0x86007788,   /* DMUX_STATE = 0, PMUX_STATE = 0, NMUX_STATE = 0, TMUX_STATE = 0         */
     
@@ -471,17 +473,17 @@ uint32_t seq_afe_fast_meas_4wire[] = {
     0x80024EF0,   /* AFE_CFG: WAVEGEN_EN = 1                                                */
     0x00000C80,   /* Wait 200us                                                             */
     0x8002CFF0,   /* AFE_CFG: ADC_CONV_EN = 1, DFT_EN = 1                                   */
-    0x00032340,   /*  Wait 12.852ms   ( -148us to stop at midscale)                                */
+    0x00032340,   /* Wait 13ms ( -148us to stop at midscale)                                */
     0x80020EF0,   /* AFE_CFG: ADC_CONV_EN = 0, DFT_EN = 0                                   */
     
     /* AN_A */
     0xA0000208,   /* AFE_ADC_CFG: AN_A, Use GAIN and OFFSET AUX                             */
     0x00000640,   /* Wait 100us                                                             */
     0x80024EF0,   /* AFE_CFG: WAVEGEN_EN = 1                                                */
-    //0x00032340,   /* Wait 12.852ms                                                              */    
+    //0x00032340,   /* Wait 13ms                                                              */    
     0x00000C80,   /* Wait 200us                                                             */
     0x8002CFF0,   /* AFE_CFG: ADC_CONV_EN = 1, DFT_EN = 1                                   */
-    0x00032340,   /*  Wait 12.852ms                                                              */
+    0x00032340,   /* Wait 13ms                                                              */
     0x80020EF0,   /* AFE_CFG: WAVEGEN_EN, ADC_CONV_EN = 0, DFT_EN = 0                       */
     0x86007788,   /* DMUX_STATE = 0, PMUX_STATE = 0, NMUX_STATE = 0, TMUX_STATE = 0         */
     0x82000002,   /* AFE_SEQ_CFG: SEQ_EN = 0                                                */
