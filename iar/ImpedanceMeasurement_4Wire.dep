@@ -290,10 +290,6 @@
             <name>$PROJ_DIR$\..\OpenEIT.c</name>
             <outputs>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 78</file>
-                </tool>
-                <tool>
                     <name>__cstat</name>
                     <file> 96</file>
                 </tool>

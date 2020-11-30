@@ -256,7 +256,7 @@ const e_config electrode_configuration_16_opposition[192] = {
 
 };
 /****************************************
-This is the opposition sequence for 16 elextrodes where: 
+This is the sequence for 16 elextrodes where: 
 
 ex_mat = eit_scan_lines(ne=16, dist=1) step = 1
 **********************************************/
