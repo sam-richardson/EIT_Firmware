@@ -124,7 +124,7 @@ int main(void)
   
   ADI_UART_RESULT_TYPE uartResult;
   int16_t  rxSize;
-  int16_t  txSize;  
+ // int16_t  txSize;  
   int16_t  mode = 0; 
   
   /* Flag which indicates whether to stop the program */
@@ -271,10 +271,10 @@ int main(void)
       /* Perform the multiplex adg732 Tetrapolar Impedance measurements */
       multiplex_adg732(hDevice, seq_afe_fast_meas_4wire, n_el);
     }    
-    else if (mode == 5) {  // 32 electrode imaging
-      uint32_t n_el = 32;
+    else if (mode == 5) {  // 16 electrode imaging
+      uint32_t n_el = 16;
       /* Perform the multiplex adg732 Tetrapolar Impedance measurements */
-      multiplex_adg732(hDevice, seq_afe_fast_meas_4wire, n_el);
+      multiplex_adg732_neighbour(hDevice, seq_afe_fast_meas_4wire, n_el);
     }    
     else if (mode == 6) {
       uint32_t n_el = 16;
@@ -971,20 +971,8 @@ void multiplex_adg732_neighbour(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *con
    // int 32 of the sequence, no of measures based on the sequence entered. 
    // i.e. n_el if 8, 16, 32, we can pick which sequence. 
    //   32, 192, 896  
-    uint32_t            numberofmeasures;
-    if (n_el == 8) {
-      numberofmeasures = 32;
-    }  
-    else if (n_el == 16) {
-      numberofmeasures = 192;
-    }
-    else if (n_el == 32) {
-      numberofmeasures = 896;
-    }
-    else {
-      numberofmeasures = 928;
-      PRINT("number of measures is 0\n");
-    }
+    uint32_t            numberofmeasures = 208;
+
     
     uint32_t            rtiaAndGain;
     /* Calculate final magnitude value, calibrated with RTIA the gain of the instrumenation amplifier */
