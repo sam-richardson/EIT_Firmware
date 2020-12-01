@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>4</fileVersion>
-    <fileChecksum>1556455674</fileChecksum>
+    <fileChecksum>1998221594</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
@@ -109,6 +109,7 @@
             <file>$PROJ_DIR$\Debug\iar_cortexM3l_math.a</file>
             <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
             <file>$PROJ_DIR$\..\inc\misra.h</file>
+            <file>$PROJ_DIR$\..\OpenEIT_neighbour.c</file>
             <file>$PROJ_DIR$\Debug\Exe\openeit.out</file>
             <file>$PROJ_DIR$\..\inc\defADuCM350.h</file>
             <file>$PROJ_DIR$\Debug\Obj\dma.xcl</file>
@@ -123,7 +124,12 @@
             <file>$PROJ_DIR$\..\inc\config\adi_afe_config.h</file>
             <file>$PROJ_DIR$\Debug\Obj\gpio.xcl</file>
             <file>$PROJ_DIR$\..\inc\config\adi_gpt_config.h</file>
+            <file>$PROJ_DIR$\Debug\Exe\openeitNeighbour_dist5.hex</file>
+            <file>$PROJ_DIR$\Debug\Exe\openeitNeighbour.hex</file>
             <file>$PROJ_DIR$\..\inc\afe_lib.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\OpenEIT_neighbour.xcl</file>
+            <file>$PROJ_DIR$\Debug\Obj\OpenEIT_neighbour.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\OpenEIT_neighbour.__cstat.et</file>
         </outputs>
         <file>
             <name>$PROJ_DIR$\..\src\wdt.c</name>
@@ -144,7 +150,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 103 61 93 38 113 68 81 18 2 45 90 94 34 83 42 92 105 9 75 3 79 95 107 76 7 31 64 117 30 114 100 111 99 51</file>
+                    <file> 103 61 93 38 114 68 81 18 2 45 90 94 34 83 42 92 106 9 75 3 79 95 108 76 7 31 64 118 30 115 100 112 99 51</file>
                 </tool>
             </inputs>
         </file>
@@ -157,7 +163,7 @@
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 112</file>
+                    <file> 113</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -167,7 +173,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 83 93 38 113 68 81 46 18 73 91 61 36 102 48 2 45 90 94 34 42 103 92 105 9 75 3 79 95 107 76 7 31 64 117 30 114 100 111 99</file>
+                    <file> 83 93 38 114 68 81 46 18 73 91 61 36 102 48 2 45 90 94 34 42 103 92 106 9 75 3 79 95 108 76 7 31 64 118 30 115 100 112 99</file>
                 </tool>
             </inputs>
         </file>
@@ -190,7 +196,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 103 61 93 38 113 68 81 18 36 102 89 45 90 94 34 83 42 92 105 9 75 3 79 95 107 76 7 31 64 117 30 114 100 111 97</file>
+                    <file> 103 61 93 38 114 68 81 18 36 102 89 45 90 94 34 83 42 92 106 9 75 3 79 95 108 76 7 31 64 118 30 115 100 112 97</file>
                 </tool>
             </inputs>
         </file>
@@ -213,7 +219,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 45 90 94 34 83 93 38 113 68 81 42 103 92 105 9 75 3 79 95 107 76 7 31 61 18 64 117 30 114 100 111</file>
+                    <file> 45 90 94 34 83 93 38 114 68 81 42 103 92 106 9 75 3 79 95 108 76 7 31 61 18 64 118 30 115 100 112</file>
                 </tool>
             </inputs>
         </file>
@@ -226,7 +232,7 @@
                 </tool>
                 <tool>
                     <name>__cstat</name>
-                    <file> 108</file>
+                    <file> 109</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
@@ -236,7 +242,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 73 93 38 113 68 81 18 91 103 6 45 90 94 34 83 42 92 105 9 75 3 79 95 107 76 7 31 61 64 117 30 114 100 111 51</file>
+                    <file> 73 93 38 114 68 81 18 91 103 6 45 90 94 34 83 42 92 106 9 75 3 79 95 108 76 7 31 61 64 118 30 115 100 112 51</file>
                 </tool>
             </inputs>
         </file>
@@ -259,7 +265,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 103 73 93 38 113 68 81 18 91 39 45 90 94 34 83 42 92 105 9 75 3 79 95 107 76 7 31 61 64 117 30 114 100 111 47 89 97 115 118 37</file>
+                    <file> 103 73 93 38 114 68 81 18 91 39 45 90 94 34 83 42 92 106 9 75 3 79 95 108 76 7 31 61 64 118 30 115 100 112 47 89 97 116 121 37</file>
                 </tool>
             </inputs>
         </file>
@@ -282,13 +288,17 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 83 93 38 113 68 81 31 61 18 45 90 94 34 42 103 92 105 9 75 3 79 95 107 76 7 111 64 117 30 114 100</file>
+                    <file> 83 93 38 114 68 81 31 61 18 45 90 94 34 42 103 92 106 9 75 3 79 95 108 76 7 112 64 118 30 115 100</file>
                 </tool>
             </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\OpenEIT.c</name>
             <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 78</file>
+                </tool>
                 <tool>
                     <name>__cstat</name>
                     <file> 96</file>
@@ -301,7 +311,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 46 93 38 113 68 81 18 61 36 102 83 54 79 95 107 76 7 53 70 48 2 45 90 94 34 42 103 92 105 9 75 3 31 64 117 30 114 100 111 99 39 47 89 97 115 118 17 23 5</file>
+                    <file> 46 93 38 114 68 81 18 61 36 102 83 54 79 95 108 76 7 53 70 48 2 45 90 94 34 42 103 92 106 9 75 3 31 64 118 30 115 100 112 99 39 47 89 97 116 121 17 23 5</file>
                 </tool>
             </inputs>
         </file>
@@ -310,7 +320,7 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 110</file>
+                    <file> 111</file>
                 </tool>
                 <tool>
                     <name>__cstat</name>
@@ -318,13 +328,13 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 109</file>
+                    <file> 110</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 103 73 93 38 113 68 81 18 91 47 45 90 94 34 83 42 92 105 9 75 3 79 95 107 76 7 31 61 64 117 30 114 100 111 39 89 97 115</file>
+                    <file> 103 73 93 38 114 68 81 18 91 47 45 90 94 34 83 42 92 106 9 75 3 79 95 108 76 7 31 61 64 118 30 115 100 112 39 89 97 116</file>
                 </tool>
             </inputs>
         </file>
@@ -341,13 +351,13 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 106</file>
+                    <file> 107</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 103 47 45 90 94 34 83 93 38 113 68 81 42 92 105 9 75 3 79 95 107 76 7 31 61 18 64 117 30 114 100 111 46</file>
+                    <file> 103 47 45 90 94 34 83 93 38 114 68 81 42 92 106 9 75 3 79 95 108 76 7 31 61 18 64 118 30 115 100 112 46</file>
                 </tool>
             </inputs>
         </file>
@@ -364,13 +374,13 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 116</file>
+                    <file> 117</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 103 100 45 90 94 34 83 93 38 113 68 81 42 92 105 9 75 3 79 95 107 76 7 31 61 18 64 117 30 114 111</file>
+                    <file> 103 100 45 90 94 34 83 93 38 114 68 81 42 92 106 9 75 3 79 95 108 76 7 31 61 18 64 118 30 115 112</file>
                 </tool>
             </inputs>
         </file>
@@ -393,7 +403,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 51 45 90 94 34 83 93 38 113 68 81 42 103 92 105 9 75 3 79 95 107 76 7 31 61 18 64 117 30 114 100 111</file>
+                    <file> 51 45 90 94 34 83 93 38 114 68 81 42 103 92 106 9 75 3 79 95 108 76 7 31 61 18 64 118 30 115 100 112</file>
                 </tool>
             </inputs>
         </file>
@@ -402,7 +412,7 @@
             <outputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 104</file>
+                    <file> 105</file>
                 </tool>
             </outputs>
         </file>
@@ -421,11 +431,34 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 48 2 45 90 94 34 83 93 38 113 68 81 62 67 42 103 92 105 9 75 3 79 95 107 35 7 31 61 18 64 117 30 114 100 111 99 46 85 89 97</file>
+                    <file> 48 2 45 90 94 34 83 93 38 114 68 81 62 67 42 103 92 106 9 75 3 79 95 108 35 7 31 61 18 64 118 30 115 100 112 99 46 85 89 97</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 48 2 45 90 94 34 83 93 38 113 68 81 62 67 42 103 92 105 9 75 3 79 95 107 35 7 31 61 18 64 117 30 114 100 111 99 46 85 89 97</file>
+                    <file> 48 2 45 90 94 34 83 93 38 114 68 81 62 67 42 103 92 106 9 75 3 79 95 108 35 7 31 61 18 64 118 30 115 100 112 99 46 85 89 97</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\OpenEIT_neighbour.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 123</file>
+                </tool>
+                <tool>
+                    <name>__cstat</name>
+                    <file> 124</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 122</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 46 93 38 114 68 81 18 61 36 102 83 54 79 95 108 76 7 53 70 48 2 45 90 94 34 42 103 92 106 9 75 3 31 64 118 30 115 100 112 99 39 47 89 97 116 121 17 23 5</file>
                 </tool>
             </inputs>
         </file>
@@ -434,13 +467,13 @@
             <outputs>
                 <tool>
                     <name>OBJCOPY</name>
-                    <file> 52</file>
+                    <file> 119</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 27 110 0 8 82 78 71 60 84 80 29 87 50 101 44 33 98 40</file>
+                    <file> 27 111 0 8 82 123 71 60 84 80 29 87 50 101 44 33 98 40</file>
                 </tool>
             </inputs>
         </file>

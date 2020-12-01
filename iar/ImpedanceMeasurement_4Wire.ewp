@@ -658,7 +658,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>openeit.hex</state>
+                    <state>openeitNeighbour_dist5.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -2155,7 +2155,7 @@
             <name>$PROJ_DIR$\..\modes.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\OpenEIT.c</name>
+            <name>$PROJ_DIR$\..\OpenEIT_neighbour.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\PinMux.c</name>

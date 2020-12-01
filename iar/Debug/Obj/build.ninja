@@ -28,13 +28,13 @@ build uart.pbi : index uart.xcl
 build wdt.pbi : index wdt.xcl
 build startup.pbi : index startup.xcl
 build system.pbi : index system.xcl
-build OpenEIT.pbi : index OpenEIT.xcl
+build OpenEIT_neighbour.pbi : index OpenEIT_neighbour.xcl
 build PinMux.pbi : index PinMux.xcl
 build rtc.pbi : index rtc.xcl
 build test_common.pbi : index test_common.xcl
 build ImpedanceMeasurement_4Wire_part0.pbi : link afe.pbi afe_lib.pbi dma.pbi
 build ImpedanceMeasurement_4Wire_part1.pbi : link gpio.pbi uart.pbi wdt.pbi
-build ImpedanceMeasurement_4Wire_part2.pbi : link startup.pbi system.pbi OpenEIT.pbi
+build ImpedanceMeasurement_4Wire_part2.pbi : link startup.pbi system.pbi OpenEIT_neighbour.pbi
 build ImpedanceMeasurement_4Wire_part3.pbi : link PinMux.pbi rtc.pbi test_common.pbi
 build ImpedanceMeasurement_4Wire.pbd : link ImpedanceMeasurement_4Wire_part0.pbi ImpedanceMeasurement_4Wire_part1.pbi ImpedanceMeasurement_4Wire_part2.pbi ImpedanceMeasurement_4Wire_part3.pbi
 build ImpedanceMeasurement_4Wire.pbw : browsedata ImpedanceMeasurement_4Wire.pbd
