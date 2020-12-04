@@ -971,7 +971,7 @@ void multiplex_adg732_neighbour(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *con
    // int 32 of the sequence, no of measures based on the sequence entered. 
    // i.e. n_el if 8, 16, 32, we can pick which sequence. 
    //   32, 192, 896  
-    uint32_t            numberofmeasures = 208;
+    uint32_t            numberofmeasures = 192;
 
     
     uint32_t            rtiaAndGain;
@@ -994,7 +994,7 @@ void multiplex_adg732_neighbour(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *con
       fixed32_t           magnitude_result[DFT_RESULTS_COUNT/2-1] = {0};
       
       // This is where we select the electrode sequence. i.e. 8,16 or 32 adjacent or opposition.  
-      int16_t* e =(int16_t *)electrode_configuration_16_nel16_dist5[econf];
+      int16_t* e =(int16_t *)electrode_configuration_16_nel16_dist5_shift1[econf];
  
       
       // M1,M2,M3,M4 = 1,2,4,5 
