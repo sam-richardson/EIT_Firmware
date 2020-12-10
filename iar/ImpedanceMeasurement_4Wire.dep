@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>4</fileVersion>
-    <fileChecksum>1251675624</fileChecksum>
+    <fileChecksum>1759493084</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
@@ -128,6 +128,8 @@
             <file>$PROJ_DIR$\..\inc\afe_lib.h</file>
             <file>$PROJ_DIR$\Debug\Obj\rtc.__cstat.et</file>
             <file>$PROJ_DIR$\..\inc\config\adi_wut_config.h</file>
+            <file>$PROJ_DIR$\Debug\Exe\openeit_dist2shift.hex</file>
+            <file>$PROJ_DIR$\Debug\Exe\openeit_dist1.hex</file>
             <file>$PROJ_DIR$\Debug\Exe\openeitNeighbour_dist5shift.hex</file>
         </outputs>
         <file>
@@ -466,7 +468,7 @@
             <outputs>
                 <tool>
                     <name>OBJCOPY</name>
-                    <file> 119 123</file>
+                    <file> 125 123 124</file>
                 </tool>
             </outputs>
             <inputs>
