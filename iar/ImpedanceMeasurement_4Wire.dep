@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>4</fileVersion>
-    <fileChecksum>1759493084</fileChecksum>
+    <fileChecksum>1033064422</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
@@ -129,8 +129,12 @@
             <file>$PROJ_DIR$\Debug\Obj\rtc.__cstat.et</file>
             <file>$PROJ_DIR$\..\inc\config\adi_wut_config.h</file>
             <file>$PROJ_DIR$\Debug\Exe\openeit_dist2shift.hex</file>
+            <file>$PROJ_DIR$\Debug\Exe\openeit_dist3.hex</file>
             <file>$PROJ_DIR$\Debug\Exe\openeit_dist1.hex</file>
+            <file>$PROJ_DIR$\Debug\Exe\openeit_dist2.hex</file>
             <file>$PROJ_DIR$\Debug\Exe\openeitNeighbour_dist5shift.hex</file>
+            <file>$PROJ_DIR$\Debug\Exe\openeit_dist4.hex</file>
+            <file>$PROJ_DIR$\Debug\Exe\openeit_dist5.hex</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
@@ -468,7 +472,7 @@
             <outputs>
                 <tool>
                     <name>OBJCOPY</name>
-                    <file> 125 123 124</file>
+                    <file> 126</file>
                 </tool>
             </outputs>
             <inputs>
@@ -478,10 +482,6 @@
                 </tool>
             </inputs>
         </file>
-        <forcedrebuild>
-            <name>$PROJ_DIR$\Debug\Exe\openeit.out</name>
-            <tool>OBJCOPY</tool>
-        </forcedrebuild>
     </configuration>
     <configuration>
         <name>Release</name>

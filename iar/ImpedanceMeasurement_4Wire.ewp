@@ -658,7 +658,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>openeit_dist1.hex</state>
+                    <state>openeit_dist2.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>

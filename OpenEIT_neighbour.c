@@ -858,19 +858,21 @@ void multiplex_adg732(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq,uin
       fixed32_t           magnitude_result[DFT_RESULTS_COUNT/2-1] = {0};
       
       // This is where we select the electrode sequence. i.e. 8,16 or 32 adjacent or opposition.  
-      int16_t* e;
-      if (n_el == 8) {
-        e = (int16_t *)electrode_configuration_8_opposition[econf];
-      }  
-      else if (n_el == 16) {
-        e = (int16_t *)electrode_configuration_16_opposition[econf];
-      }
-      else if (n_el == 32) {
-        e = (int16_t *)electrode_configuration_32_opposition[econf];
-      }
-      else {
-        e = (int16_t *)electrode_configuration_32_adjacent[econf];
-      }
+      
+      int16_t* e =(int16_t *)electrode_configuration_16_nel16_dist1[econf];
+    //  int16_t* e;
+     // if (n_el == 8) {
+     //   e = (int16_t *)electrode_configuration_16_nel16_dist8[econf];
+     // }  
+      ////else if (n_el == 16) {
+      //  e = (int16_t *)electrode_configuration_16_nel16_dist8[econf];
+      //}
+     // else if (n_el == 32) {
+     //   e = (int16_t *)electrode_configuration_16_nel16_dist8[econf];
+    //  }
+    //  else {
+     //   e = (int16_t *)electrode_configuration_16_nel16_dist8[econf];
+     // }
       
       // M1,M2,M3,M4 = 1,2,4,5 
       // U4, A-, m1, position 3
@@ -971,7 +973,7 @@ void multiplex_adg732_neighbour(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *con
    // int 32 of the sequence, no of measures based on the sequence entered. 
    // i.e. n_el if 8, 16, 32, we can pick which sequence. 
    //   32, 192, 896  
-    uint32_t            numberofmeasures = 208;
+    uint32_t            numberofmeasures = 192;
 
     
     uint32_t            rtiaAndGain;
@@ -994,7 +996,7 @@ void multiplex_adg732_neighbour(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *con
       fixed32_t           magnitude_result[DFT_RESULTS_COUNT/2-1] = {0};
       
       // This is where we select the electrode sequence. i.e. 8,16 or 32 adjacent or opposition.  
-      int16_t* e =(int16_t *)electrode_configuration_16_nel16_dist1[econf];
+      int16_t* e =(int16_t *)electrode_configuration_16_nel16_dist2[econf];
  
       
       // M1,M2,M3,M4 = 1,2,4,5 
@@ -1128,19 +1130,21 @@ void bipolar_adg732(ADI_AFE_DEV_HANDLE  hDevice, const uint32_t *const seq,uint3
       int8_t              i = 0;   
           
       // This is where we select the electrode sequence. i.e. 8,16 or 32 adjacent or opposition.  
-      int16_t* e;
-      if (n_el == 8) {
-        e = (int16_t *)electrode_configuration_8_opposition[econf];
-      }  
-      else if (n_el == 16) {
-        e = (int16_t *)electrode_configuration_16_opposition[econf];
-      }
-      else if (n_el == 32) {
-        e = (int16_t *)electrode_configuration_32_opposition[econf];
-      }
-      else {
-        e = (int16_t *)electrode_configuration_32_opposition[econf];
-      }
+      
+          int16_t* e =(int16_t *)electrode_configuration_16_nel16_dist1[econf];
+   //   int16_t* e;
+   //   if (n_el == 8) {
+   //     e = (int16_t *)electrode_configuration_8_opposition[econf];
+   //   }  
+    //  else if (n_el == 16) {
+   //     e = (int16_t *)electrode_configuration_16_opposition[econf];
+   //   }
+   //   else if (n_el == 32) {
+  //     e = (int16_t *)electrode_configuration_32_opposition[econf];
+  //    }
+  //   else {
+ //       e = (int16_t *)electrode_configuration_32_opposition[econf];
+ //     }
       
       // M1,M2,M3,M4 = 1,2,4,5 
       // U4, A-, m1, position 3
